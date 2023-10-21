@@ -1,4 +1,4 @@
-// This is a program to insert an Element in an Array at a particulat Index;
+// This is a program to insert an Element in an Array at a particular Index;
 
 #include <stdio.h>
 
