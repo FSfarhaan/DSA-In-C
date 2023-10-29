@@ -1,12 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Defining the structure of the Node;
 struct Node {
     int data;
     struct Node * next;
 };
+// Initializing the head to be NULL;
 struct Node * head = NULL;
 
+// To check whether a node is present in a node or not;
 int isPresent(int nodeVal) {
     struct Node * ptr;
     ptr = head;
@@ -20,19 +23,43 @@ int isPresent(int nodeVal) {
     else return 1;
 }
 
+// To create linked list of any number of nodes;
 void createLinkedList(){
-    int val;
-    printf("Enter value to be stored: ");
-    scanf("%d", &val);
-    printf("A new linked list of value %d has been created.", val);
+    int noOfNodes;
 
-    struct Node * newNode;
-    newNode = (struct Node *) malloc (sizeof(struct Node));
-    newNode -> data = val;
-    newNode -> next = NULL;
-    head = newNode;
+    printf("Enter the number of nodes to be created: ");
+    scanf("%d", &noOfNodes);
+
+    for(int i = 1; i <= noOfNodes; i++) {
+        int val;
+        printf("Enter the value of the node: ");
+        scanf("%d", &val);
+
+        struct Node * newNode;
+        struct Node * ptr;
+        newNode = (struct Node *) malloc (sizeof(struct Node));
+        newNode -> data = val;
+
+        // For the first node;
+        if(head == NULL){
+            head = newNode;
+            newNode -> next = NULL;
+        }
+        // For nodes from second till noOfNodes;
+        else {
+            ptr = head;
+            while(ptr -> next != NULL){
+                ptr = ptr -> next;
+            }
+            ptr -> next = newNode;
+            newNode -> next = NULL;
+        }
+    }
+
+    
 }
 
+// Insert a node at beginning;
 void insertAtBeg() {
 
     if(head == NULL) printf("Create a linked list first");
@@ -50,6 +77,7 @@ void insertAtBeg() {
     }
 }
 
+// Insert a node at end;
 void insertAtEnd() {
     if(head == NULL) printf("Create a linked list first");
     else {
@@ -72,6 +100,7 @@ void insertAtEnd() {
     }
 }
 
+// Insert a node after a node;
 void insertAfter() {
     if(head == NULL) printf("Create a linked list first");
     else {
@@ -103,6 +132,7 @@ void insertAfter() {
     }
 }
 
+// Insert a node before a node;
 void insertBefore() {
     if(head == NULL) printf("Create a linked list first");
     else {
@@ -134,6 +164,7 @@ void insertBefore() {
     }
 }
 
+// Insert a node at an index;
 void insertAtIndex() {
     if(head == NULL) printf("Create a linked list first");
     else {
@@ -160,6 +191,7 @@ void insertAtIndex() {
     }
 }
 
+// Delete a node at the beginning;
 void deleteAtBeg() {
     if(head == NULL) printf("Create a linked list first");
     else {
@@ -171,6 +203,7 @@ void deleteAtBeg() {
     }
 }
 
+// Delete a node at the end;
 void deleteAtEnd() {
     if(head == NULL) printf("Create a linked list first");
     else {
@@ -187,6 +220,7 @@ void deleteAtEnd() {
     }
 }
 
+// Delete a node after a node;
 void deleteAfter() {
     if(head == NULL) printf("Create a linked list first");
     else {
@@ -213,6 +247,7 @@ void deleteAfter() {
     }
 }
 
+// Delete a node before a node;
 void deleteBefore() {
     if(head == NULL) printf("Create a linked list first");
     else {
@@ -240,6 +275,7 @@ void deleteBefore() {
     }
 }
 
+// Delete a node with a value;
 void deleteSpecific() {
     if(head == NULL) printf("Create a linked list first");
     else {
@@ -267,6 +303,7 @@ void deleteSpecific() {
     }
 }
 
+// To display the value of the nodes;
 void displayNodes() {
     if(head == NULL) printf("Create a linked list first");
     else {
@@ -281,10 +318,11 @@ void displayNodes() {
     }
 }
 
+// Gives user choices to perform on the linked list until the user exits himself;
 void menu() {
     while(1){
     int choice;
-        printf("\n\n1: Create a new linked list. \n2: Insert a node at beginning. \n3: Insert a node at the end. \n4: Insert a node after a node. \n5: Insert a node before a node. \n6: Insert a node at an index. \n7: Delete a node at beginning. \n8: Delete a node at the end. \n9: Delete a node after a node. \n10: Delete a node before a node. \n11: Delete a specific node. \n12: Display the Linked List. \n13: Exit. \n\n");
+        printf("\n\n1: Create a linked list. \n2: Insert a node at beginning. \n3: Insert a node at the end. \n4: Insert a node after a node. \n5: Insert a node before a node. \n6: Insert a node at an index. \n7: Delete a node at beginning. \n8: Delete a node at the end. \n9: Delete a node after a node. \n10: Delete a node before a node. \n11: Delete a specific node. \n12: Display the Linked List. \n13: Exit. \n\n");
         printf("Enter your choice: ");
 
         scanf("%d", &choice);
@@ -321,6 +359,7 @@ void menu() {
     }
 }
  
+// Main starts here;
 int main() {
     menu();
     return 0;
