@@ -1,5 +1,6 @@
-printf("Linked List before Insertion: \n");
-    LinkedListTraversal(head);
-    printf("\nLinked list after Insertion: \n");
-    head = InsertAtBeg(head, 56);
-    LinkedListTraversal(head);
+
+    // push(20);
+    // push(30);
+    // push(40);
+    // push(50);
+    // push(60);
